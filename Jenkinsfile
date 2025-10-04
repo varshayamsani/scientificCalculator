@@ -10,9 +10,10 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 echo 'Cloning GitHub repository...'
-                git 'https://github.com/varshayamsani/scientificCalculator.git'
+                git branch: 'main', url: 'https://github.com/varshayamsani/scientificCalculator.git'
 
             }
+
         }
 
         stage('Build') {
