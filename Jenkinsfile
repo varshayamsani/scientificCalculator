@@ -5,7 +5,7 @@ pipeline {
             jdk 'JDK21'    // Your JDK tool name
         }
     environment {
-        DOCKER_IMAGE = "varshayamsani/scientific-calculator:latest"
+        DOCKER_IMAGE = "varshayamsani/scientificcalculator:latest"
     }
 
     stages {
@@ -43,7 +43,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh '/usr/local/bin/docker build -t varshayamsani/scientific-calculator:latest .'
+                sh '/usr/local/bin/docker build -t varshayamsani/scientificcalculator:latest .'
             }
         }
 
