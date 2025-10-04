@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
             maven 'Maven3' // Name you gave in Global Tool Config
-            jdk 'JDK17'    // Your JDK tool name
+            jdk 'JDK21'    // Your JDK tool name
         }
     environment {
         DOCKER_IMAGE = "varshayamsani/scientific-calculator:latest"
