@@ -43,7 +43,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh '/opt/homebrew/bin/docker build -t varshayamsani/scientific-calculator:latest .'
+                sh '/usr/local/bin/docker build -t varshayamsani/scientific-calculator:latest .'
             }
         }
 
