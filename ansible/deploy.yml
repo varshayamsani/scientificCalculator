@@ -1,0 +1,26 @@
+---
+- name: Deploy Scientific Calculator Docker Container Locally
+  hosts: local
+  become: yes
+  tasks:
+
+    - name: Remove old container if exists
+      community.docker.docker_container:
+        name: scientific-calculator
+        state: absent
+        force_kill: yes
+
+    - name: Pull Docker image from Docker Hub
+      community.docker.docker_image:
+        name: varshayamsani/scientific-calculator:latest
+        source: pull
+
+    - name: Run container interactively
+      community.docker.docker_container:
+        name: scientific-calculator
+        image: varshayamsani/scientific-calculator:latest
+        state: started
+        restart_policy: unless-stopped
+        tty: yes
+        interactive: yes
+        detach: no
