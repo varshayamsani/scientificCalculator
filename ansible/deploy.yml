@@ -1,9 +1,9 @@
-- hosts: local
+- hosts: localhost
   become: false
 
   vars:
-    docker_image: "{{ docker_image | default('varshayamsani/scientificcalculator') }}"
-    docker_tag:   "{{ docker_tag | default('latest') }}"
+    docker_image: varshayamsani/scientificcalculator
+    docker_tag: latest
     container_name: Calculator
 
   tasks:
