@@ -1,4 +1,4 @@
-# Use lightweight Java 17 base image
+# Use lightweight Java 21 base image
 FROM openjdk:21-jdk-slim
 
 # Set working directory
