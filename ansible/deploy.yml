@@ -1,26 +1,17 @@
----
-- name: Deploy Scientific Calculator Docker Container Locally
-  hosts: local
+- hosts: local
   become: false
+
+  vars:
+    docker_image: "{{ docker_image | default('varshayamsani/scientificcalculator') }}"
+    docker_tag:   "{{ docker_tag | default('latest') }}"
+    container_name: Calculator
+
   tasks:
+    - name: Pull latest docker image
+      command: docker pull {{ docker_image }}:{{ docker_tag }}
 
-    - name: Remove old container if exists
-      community.docker.docker_container:
-        name: scientificcalculator
-        state: absent
-        force_kill: yes
+    - name: Stop and remove old container (if any)
+      shell: docker rm -f {{ container_name }} || true
 
-    - name: Pull Docker image from Docker Hub
-      community.docker.docker_image:
-        name: varshayamsani/scientificcalculator:latest
-        source: pull
-
-    - name: Run container interactively
-      community.docker.docker_container:
-        name: scientific-calculator
-        image: varshayamsani/scientificcalculator:latest
-        state: started
-        restart_policy: unless-stopped
-        tty: yes
-        interactive: yes
-        detach: no
+    - name: Run new container
+      shell: docker run -d --name {{ container_name }} -it --restart unless-stopped {{ docker_image }}:{{ docker_tag }}
