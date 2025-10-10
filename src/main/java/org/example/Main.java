@@ -29,10 +29,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("\n=== Scientific Calculator ===");
-            System.out.println("1. Square Root (√x)");
-            System.out.println("2. Factorial (!x)");
-            System.out.println("3. Natural Logarithm (ln x)");
-            System.out.println("4. Power (x^b)");
+            System.out.println("1. Square Root");
+            System.out.println("2. Factorial");
+            System.out.println("3. Natural Logarithm");
+            System.out.println("4. Power");
             System.out.println("5. Exit");
             System.out.print("Choose an operation: ");
 

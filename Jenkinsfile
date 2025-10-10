@@ -33,20 +33,12 @@ pipeline {
             }
         }
 
-        stage('Check Docker') {
-          steps {
-            sh 'which docker || true'
-            sh 'docker --version || true'
-          }
-        }
-
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
                 sh '/usr/local/bin/docker build -t varshayamsani/scientificcalculator:latest .'
             }
         }
-
 
         stage('Push Docker Image') {
             steps {
